@@ -41,10 +41,10 @@ class ServicioViewModel : ViewModel() {
         }
     }
 
-    fun createServicio(nombre: String, precio: Double, duracion: Int, costo: Double?, onSuccess: () -> Unit) {
+    fun createServicio(nombre: String, precio: Double, duracion: Int, onSuccess: () -> Unit) {
         viewModelScope.launch {
             try {
-                val nuevo = ServicioCreate(nombre_servicio = nombre, precio = precio, duracion = duracion, costo = costo)
+                val nuevo = ServicioCreate(nombre_servicio = nombre, precio = precio, duracion = duracion, costo = null)
                 repository.createServicio(nuevo)
                 fetchServicios()
                 onSuccess()
